@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import ThemeContext from '../context/ThemeContext'
 
 export default function ChangeTheme() {
-  const data = useContext(ThemeContext)
-  console.log(data);
+  const { theme, changeTheme } = useContext(ThemeContext)
+
 
   return (
     <div>
-      <button>Change Theme</button>
+      <div>Aktif Tema: <strong>{theme}</strong></div>
+      <button onClick={changeTheme}>Change Theme</button>
     </div>
   )
 }
