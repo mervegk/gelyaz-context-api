@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import ChangeTheme from './components/ChangeTheme';
 import Footer from './components/Footer';
 import ChangeLang from './components/ChangeLang';
-import ThemeContext from './context/ThemeContext';
+import { useTheme } from './context/ThemeContext';
 
 export default function Container() {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useTheme();
   return (
     <div className={`container ${theme}`}>
       <ChangeLang />

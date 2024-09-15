@@ -1,8 +1,8 @@
-import React, { useContext } from 'react'
-import ThemeContext from '../context/ThemeContext'
+import React from 'react'
+import { useTheme } from '../context/ThemeContext'
 
 export default function ChangeTheme() {
-  const { theme, changeTheme } = useContext(ThemeContext)
+  const { theme, changeTheme } = useTheme();
 
 
   return (
