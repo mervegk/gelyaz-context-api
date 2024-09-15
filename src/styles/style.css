@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  padding: 6px;
+}
+
+.dark {
+  background: black;
+}
+
+.dark * {
+  color: white;
+}
+
+.dark button {
+  color: black;
+}
