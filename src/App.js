@@ -2,16 +2,17 @@ import './styles/todo.css'
 import Header from './components/todo-app/Header';
 import Content from './components/todo-app/Content';
 import Footer from './components/todo-app/Footer';
+import { TodoProvider } from './context/todo-app/TodoContext';
 
 /* TODO APP */
 const App = () => (
-  <>
+  <TodoProvider>
     <section className="todoapp">
       <Header />
       <Content />
     </section>
     <Footer />
-  </>
+  </TodoProvider>
 );
 
 /* CONTEXT API EĞİTİMİ */
