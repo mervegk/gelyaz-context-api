@@ -2,9 +2,11 @@ import React from 'react'
 import { useTodo } from '../../../../context/todo-app/TodoContext'
 
 export default function Item({ todo }) {
-  const { todos, setTodosi, toggleTodo } = useTodo();
+  const { todos, setTodos, toggleTodo, destroyTodo } = useTodo();
 
-  const onChange = (todoId) => toggleTodo(todoId);
+  const onChange = todoId => toggleTodo(todoId);
+  const onDestroy = todoId => destroyTodo(todoId)
+
   return (
     <li className={todo.completed === true ? "completed" : ""}>
       <div className="view">
@@ -12,7 +14,7 @@ export default function Item({ todo }) {
           onChange={() => onChange(todo.id)}
         />
         <label>{todo.text}</label>
-        <button className="destroy"></button>
+        <button className="destroy" onClick={() => onDestroy(todo.id)}></button>
       </div>
     </li>
   )
