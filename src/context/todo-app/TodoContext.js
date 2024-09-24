@@ -8,18 +8,26 @@ export const TodoProvider = ({ children }) => {
     {
       id: 1,
       text: "Learn React",
-      complated: true
+      completed: true
     },
     {
       id: 2,
       text: "Learn Javascript",
-      complated: false
+      completed: false
     }
   ]);
 
-  const addTodo = (text) => setTodos(prev => [...prev, { id: uuidv4(), text: text, completed: false }])
+  const addTodo = (text) => setTodos(prev => [...prev, { id: uuidv4(), text: text, completed: false }]);
+  const toggleTodo = (todoId) => {
+    const duplicatedTodos = [...todos];
+    const itemIndex = duplicatedTodos.findIndex(todo => todo.id === todoId);
+    const item = todos[itemIndex];
 
-  const values = { todos, setTodos, addTodo }
+    item.completed = !item.completed;
+    setTodos(duplicatedTodos)
+  }
+
+  const values = { todos, setTodos, addTodo, toggleTodo }
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>
 }
