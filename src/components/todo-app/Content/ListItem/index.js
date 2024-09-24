@@ -2,35 +2,25 @@ import React from 'react'
 import { useTodo } from '../../../../context/todo-app/TodoContext'
 import Item from './Item'
 
+let filtered = null
+
 export default function List() {
-  const { todos } = useTodo();
+  const { todos, filter } = useTodo();
+
+  filtered = todos;
+
+  if (filter !== 'All') {
+    filtered = todos.filter(todo => filter === 'Active' ?
+      todo.completed === false && todo :
+      todo.completed === true && todo
+    )
+  }
 
   return (
     <ul className="todo-list">
       {
-        todos.map((todo) => <Item key={todo.id} todo={todo} />)
+        filtered.map((todo) => <Item key={todo.id} todo={todo} />)
       }
-      {/*       <li className="completed">
-        <div className="view">
-          <input className="toggle" type="checkbox" />
-          <label>Learn JavaScript</label>
-          <button className="destroy"></button>
-        </div>
-      </li>
-      <li>
-        <div className="view">
-          <input className="toggle" type="checkbox" />
-          <label>Learn React</label>
-          <button className="destroy"></button>
-        </div>
-      </li>
-      <li>
-        <div className="view">
-          <input className="toggle" type="checkbox" />
-          <label>Have a life!</label>
-          <button className="destroy"></button>
-        </div>
-      </li> */}
     </ul>
   )
 }

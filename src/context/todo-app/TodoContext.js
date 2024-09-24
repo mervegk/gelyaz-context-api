@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
+  const [filter, setFilter] = useState('All');
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -18,6 +19,7 @@ export const TodoProvider = ({ children }) => {
   ]);
 
   const addTodo = (text) => setTodos(prev => [...prev, { id: uuidv4(), text: text, completed: false }]);
+
   const toggleTodo = (todoId) => {
     const duplicatedTodos = [...todos];
     const itemIndex = duplicatedTodos.findIndex(todo => todo.id === todoId);
@@ -35,7 +37,9 @@ export const TodoProvider = ({ children }) => {
     setTodos(duplicatedTodos)
   }
 
-  const values = { todos, setTodos, addTodo, toggleTodo, destroyTodo }
+  const clearCompletedTodo = () => setTodos(prev => prev.filter(todo => !todo.completed));
+
+  const values = { todos, setTodos, addTodo, toggleTodo, destroyTodo, filter, setFilter, clearCompletedTodo }
 
   return <TodoContext.Provider value={values}>{children}</TodoContext.Provider>
 }
