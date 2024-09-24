@@ -428,3 +428,17 @@ meta,
 [property="todo"] .view:focus-within button {
   display: none !important;
 }
+
+@media(max-width:767px) {
+  .todo-container {
+    padding: 15px;
+  }
+
+  .new-todo {
+    font-size: 18px;
+  }
+
+  .todo-list li {
+    font-size: 18px;
+  }
+}

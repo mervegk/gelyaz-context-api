@@ -7,11 +7,13 @@ import { TodoProvider } from './context/todo-app/TodoContext';
 /* TODO APP */
 const App = () => (
   <TodoProvider>
-    <section className="todoapp">
-      <Header />
-      <Content />
-    </section>
-    <Footer />
+    <main className='todo-container'>
+      <section className="todoapp">
+        <Header />
+        <Content />
+      </section>
+      <Footer />
+    </main>
   </TodoProvider>
 );
 
